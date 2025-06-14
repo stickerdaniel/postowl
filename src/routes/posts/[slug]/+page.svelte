@@ -20,7 +20,6 @@
     initOrReset();
   }
 
-
   function initOrReset() {
     title = data.title;
     content = data.content;

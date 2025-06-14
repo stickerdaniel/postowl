@@ -26,6 +26,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@lukulent/svelte-umami": "^0.0.4",
     "@sveltejs/adapter-node": "^5.2.5",
     "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",

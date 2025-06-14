@@ -4,7 +4,8 @@ import { DEFAULT_BIO } from '$lib/constants';
 import { nanoid } from '$lib/util';
 import sendMail from '$lib/sendMail';
 import { Blob } from 'node:buffer';
-import { env } from '$env/dynamic/private'; 
+import { env } from '$env/dynamic/private';
+import { trackEvent } from '@lukulent/svelte-umami';
 const DB_PATH = env.DB_PATH;
 const ADMIN_NAME = env.ADMIN_NAME;
 const ADMIN_PASSWORD = env.ADMIN_PASSWORD;
@@ -89,6 +90,15 @@ export async function createPost(
         <p><em>(This message was sent from ${ADMIN_NAME}'s <a href="https://www.postowl.com">PostOwl</a> website.)</em></p>`
       );
     }
+
+    // Track post sharing event if recipients exist
+    if (recipients.length > 0) {
+      trackEvent('post_shared', {
+        post_title: title,
+        recipient_count: recipients.length
+      });
+    }
+
     return post;
   })();
 }
@@ -384,6 +394,12 @@ export async function getPostBySlug(slug, secret = undefined, currentUser) {
         db.prepare('UPDATE recipients SET has_seen = TRUE WHERE recipient_id = ?').run(
           recipient_id
         );
+
+        // Track secret link access
+        trackEvent('secret_link_accessed', {
+          post_title: post.title,
+          post_slug: post.slug
+        });
       }
     }
 
