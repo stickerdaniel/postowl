@@ -5,7 +5,7 @@ alwaysApply: false
 ---
 # Svelte Umami Analytics (Sumami) 
 
-Add Umami Analytics easily to your Svelte or SvelteKit app and track analytics and custom events.
+Add Umami Analytics easily to your Svelte or SvelteKit app and trackanalytics and custom events.
 All by this type-safe Svelte component.
 
 _Important_ - this requires a [Umami Analytics](mdc:https:/umami.is) account.
