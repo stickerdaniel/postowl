@@ -3,7 +3,7 @@ description: How to use Umami Analytics in your Svelte projects
 globs: 
 alwaysApply: false
 ---
-# Svelte Umami Analytics (Sumami)
+# Svelte Umami Analytics (Sumami) 
 
 Add Umami Analytics easily to your Svelte or SvelteKit app and track analytics and custom events.
 All by this type-safe Svelte component.
